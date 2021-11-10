@@ -77,7 +77,7 @@
     $car3 = new MPV;
     $car3 -> setModal("WISH");
     $car3 -> setEngine("1800CC");
-    $car3 -> setSeat(5,8);
+    $car3 -> setSeat(7,8);
     echo $car3 -> getModal();
     echo $car3 -> getEngine();
     echo $car3 -> getSeat();
