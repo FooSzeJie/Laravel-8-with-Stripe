@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use DB; //import Database Library
-use app\Models\Category;    //import category model
+use App\Models\Category;    //import category model
 
 class CategoryController extends Controller
 {
