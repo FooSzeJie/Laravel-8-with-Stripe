@@ -14,6 +14,12 @@ class CategoryController extends Controller
             'name'=>$r->categoryName,
         ]);
 
-        Return view('addCategory');
+        //Return view('addCategory');
+        Return redirect()->route('showCategory');
+    }
+
+    public function view(){
+        $viewCategory = Category::all(); //generate SQL select * from categories
+        Return view('showCategory')->with('categories', $viewCategory);
     }
 }
