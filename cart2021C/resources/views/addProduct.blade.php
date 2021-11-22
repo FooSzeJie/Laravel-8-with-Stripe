@@ -8,10 +8,10 @@
     <div class="col-sm-6">
     <br><br>
     <h3>Create New Product</h3>
-    <form action="{{route('addCategory)}}" method="POST">
-        @CSRF
+    <form action="">
+        
         <div class="form-group">
-            <label for="categoryName">Product Name</label>
+            <label for="productName">Product Name</label>
             <input type="text" class="form-control" id="productName" name="productName">
         </div>
 
@@ -21,7 +21,7 @@
         </div>
 
         <div class="form-group">
-            <label for="categoryName">Product Price</label>
+            <label for="productPrice">Product Price</label>
             <input type="number" class="form-control" id="productPrice" name="productPrice" min="0">
         </div>
 
