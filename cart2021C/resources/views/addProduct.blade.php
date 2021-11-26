@@ -37,7 +37,11 @@
 
         <div class="form-group">
             <label for="catID">Category</label>
-            <input type="text" class="form-control" id="CategoryID" name="CategoryID">
+            <select name="CategoryID" id="CategoryID" Class="form-control">
+                @foreach($categoryID as $category)
+                    <option value="{{$category->id}}"> {{$category->name}} </option>
+                @endforeach
+            </select>
         </div>
 
         <button type="submit" class="btn btn-primary">Add New </button>
