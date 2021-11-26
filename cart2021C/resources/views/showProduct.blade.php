@@ -29,7 +29,7 @@
                 <td>{{$product->price}}</td>
                 <td>{{$product->quantity}}</td>
                 <td>{{$product->catName}}</td>
-                <td><a href="" class="btn btn-warning btn-xs">Edit</a> <a href="{{ route('deleteProduct',['id' =>$product->id])}}" class="btn btn-danger btn-xs" onClick="return confirm('You confirm to Delete the Data?')">Delete</a></td>
+                <td><a href="" class="btn btn-warning btn-xs">Edit</a> <a href="{{ route('deleteProduct',['id' =>$product->id])}}" class="btn btn-danger btn-xs" onClick="return confirm('DO you confirm to Delete the Data?')">Delete</a></td>
                                             
             </tr>
             @endforeach
