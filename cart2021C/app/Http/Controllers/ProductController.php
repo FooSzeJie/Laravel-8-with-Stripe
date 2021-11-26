@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use DB; //import Database Library
 use App\Models\Product;
+use Session;
 
 class ProductController extends Controller
 {
@@ -23,6 +24,7 @@ class ProductController extends Controller
         ]);
 
         //Return view('addProduct');
+        Session:: flash('Success',"Product Create Successfully!");
         Return redirect()->route('showProduct');
     }
 
