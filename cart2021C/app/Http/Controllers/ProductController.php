@@ -54,4 +54,26 @@ class ProductController extends Controller
         Return view('editProduct') -> with('products', $products)
         -> with('Categories',Category::all());
     }
+
+    public function update()
+    {
+        $r=request();
+        $products = Product::find($r->productID);
+
+        if($r->file('productImage')!=''){
+            $image=$r->file('productImage');
+            $image->move('images',$image->getClientOriginalName());
+            $imageName=$image->getClientOriginalName();
+            $products->image=$imageName;
+        }
+
+        $products->name=$r->productName;
+        $products->description=$r->productDescription;
+        $products->price=$r->productPrice;
+        $products->quantity=$r->productQuantity;
+        $products->CategoryID=$r->CategoryID;
+        $products->save();
+
+        Return redirect()->route('showProduct');
+    }
 }
