@@ -45,7 +45,6 @@
                 @foreach($Categories as $category)
                     <option value="{{$category->id}}"> {{$category->name}} </option>
                 @endforeach
-            </select>a
         </div>
 
         @endforeach
