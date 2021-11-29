@@ -35,14 +35,14 @@
 
         <div class="form-group">
             <label for="productImage">Product Image</label>
-            <img src="{{asset('images')}} / {{$product->image}}" alt="" class="img-fluid" width="100">
+            <img src="{{ asset('images')}}/{{$product->image}}" alt="" class="img-fluid" width="100">
             <input type="file" class="form-control" id="image" name="image" value="">
         </div>
 
         <div class="form-group">
             <label for="catID">Category</label>
             <select name="CategoryID" id="CategoryID" Class="form-control">
-                @foreach($categoryID as $category)
+                @foreach($Categories as $category)
                     <option value="{{$category->id}}"> {{$category->name}} </option>
                 @endforeach
             </select>
