@@ -39,7 +39,7 @@ Route::get('/editProduct/{id}',[App\Http\Controllers\ProductController::class, '
 ->name('editProduct');
 //http://localhost/editProduct.php?id=22    localhost/editProduct/22
 
-Route::post('/updateProduct',[App\Http\Controllers\ProductController::class,'update'])->name('updateProduct');
+Route::post('/updateProduct', [App\Http\Controllers\ProductController::class, 'update'])->name('updateProduct');
 
 Auth::routes();
 
