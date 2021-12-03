@@ -50,7 +50,7 @@ class ProductController extends Controller
 
     public function edit($id)
     {
-        $products=Product::all()->where('id', $id);
+        $products = Product::all()->where('id', $id);
         Return view('editProduct') -> with('products', $products)
         -> with('Categories',Category::all());
     }
@@ -75,5 +75,11 @@ class ProductController extends Controller
         $products->save();
 
         Return redirect()->route('showProduct');
+    }
+
+    public function productdetail($id){
+        $products = Product::all() -> where('id',$id);
+
+        Return view('productDetail') -> with('products', $products);
     }
 }
