@@ -25,10 +25,10 @@ class CartController extends Controller
         ]);
 
         Session:: flash('Success',"add Cart Successfully!");
-        Return redirect()->route('showProduct');
+        Return redirect()->route('show.my.cart');
     }
     
-    public function showMycart(){
+    public function showMyCart(){
         $carts = DB::table('my_carts')
         ->leftjoin('products','products.id','=','my_carts.productID')
         ->select('my_carts.quantity as cartQTY', 'my_carts.id as cid', 'products.*')
@@ -37,5 +37,12 @@ class CartController extends Controller
         ->get();
 
         return view('myCart')->with('carts',$carts);
+    }
+
+    public function delete($id){
+        $deleteItem = myCart::find($id);  //binding record
+        $deleteItem->delete();   //delete record
+        Session::flash('Success','Item was remove Successfully !');
+        Return redirect()->route('show.my.cart');
     }
 }
