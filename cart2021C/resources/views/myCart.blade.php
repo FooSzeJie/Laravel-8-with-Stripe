@@ -45,7 +45,7 @@
                 <td>{{$cart->price}}</td>
                 <td>{{$cart->cartQTY}}</td>
                 <td>{{$cart->price*$cart->cartQTY}}</td>
-                <td><a href="{{ route('delete.cart.item',['id' =>$cart->id])}}" class="btn btn-danger btn-xs" onClick="return confirm('DO you confirm to Delete the Data?')">Delete</a></td>
+                <td><a href="{{ route('delete.cart.item',['id' =>$cart->cid])}}" class="btn btn-danger btn-xs" onClick="return confirm('DO you confirm to Delete the Data?')">Delete</a></td>
                                           
             </tr>
             @endforeach
