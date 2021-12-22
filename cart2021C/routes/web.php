@@ -41,7 +41,7 @@ Route::get('/editProduct/{id}',[App\Http\Controllers\ProductController::class, '
 
 Route::post('/updateProduct', [App\Http\Controllers\ProductController::class, 'update'])->name('updateProduct');
 
-Route::get('/productList',[App\Http\Controllers\ProductController::class,'list'])->name('productList');
+Route::get('/viewProduct',[App\Http\Controllers\ProductController::class,'show'])->name('ViewProduct');
 
 Route::get('/productDetail/{id}', [App\Http\Controllers\ProductController::class,'productdetail'])
 ->name('product.detail');

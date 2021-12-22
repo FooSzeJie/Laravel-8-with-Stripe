@@ -1,7 +1,7 @@
 @extends('layout')
 @section('content')
 <div class="row row-cols-1 row-cols-md-3 g-4">
-@foreach($products as $product)
+@foreach($showproducts as $product)
   <div class="col">
     <br>
     <div class="card ">
