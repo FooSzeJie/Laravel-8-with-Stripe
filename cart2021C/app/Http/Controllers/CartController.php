@@ -24,7 +24,7 @@ class CartController extends Controller
             'orderID' => '',
         ]);
 
-        Session:: flash('Success',"add Cart Successfully!");
+        Session:: flash('Success',"Add Cart Successfully!");
         Return redirect()->route('show.my.cart');
     }
     
