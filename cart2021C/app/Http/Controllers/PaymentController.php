@@ -46,4 +46,14 @@ class PaymentController extends Controller
             Session::flash('Success','Order Successfully !!!');
             return back();
     }
+
+    public function showMyOrder(){
+        //$viewProduct = Product::all();
+        $displayOrder = DB::table('my_orders')
+        ->leftjoin('users','users.id','=','my_orders.userID')
+        ->select('my_orders.id as oid','my_orders.*','users.*')
+        ->get();
+ 
+         Return view('myOrder')->with('myOrders',$displayOrder);
+     }
 }
