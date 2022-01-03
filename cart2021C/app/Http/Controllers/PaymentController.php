@@ -8,6 +8,7 @@ use Stripe;
 use DB;
 use Auth;
 use Session;
+use Notification;
 use App\Models\myCart;
 use App\Models\myOrder;
 
@@ -43,17 +44,20 @@ class PaymentController extends Controller
                 $carts->save();
             }
 
+            $email = 'D200234C@sc.edu.my';  //receiver email
+            Notification::route('mail', $email)->notify(new \App\Notifications\orderPaid($email));
+
             Session::flash('Success','Order Successfully !!!');
             return back();
     }
 
     public function showMyOrder(){
         //$viewProduct = Product::all();
-        $displayOrder = DB::table('my_orders')
-        ->leftjoin('users','users.id','=','my_orders.userID')
-        ->select('my_orders.id as oid','my_orders.*','users.*')
+        $orders = DB::table('my_orders')
+        ->select('my_orders.id as oid','my_orders.*')
+        ->where('my_orders.userID','=',Auth::id())
         ->get();
  
-         Return view('myOrder')->with('myOrders',$displayOrder);
+         Return view('myOrder')->with('myOrders',$orders);
      }
 }

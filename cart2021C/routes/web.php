@@ -43,6 +43,8 @@ Route::post('/updateProduct', [App\Http\Controllers\ProductController::class, 'u
 
 Route::get('/viewProduct',[App\Http\Controllers\ProductController::class,'show'])->name('ViewProduct');
 
+Route::post('/Products', [App\Http\Controllers\ProductController::class, 'searchProduct'])->name('search.product');
+
 Route::get('/productDetail/{id}', [App\Http\Controllers\ProductController::class,'productdetail'])
 ->name('product.detail');
 
@@ -56,6 +58,8 @@ Route::get('/deleteCart/{id}', [App\Http\Controllers\CartController::class,'dele
 Route::post('/checkout', [App\Http\Controllers\PaymentController::class, 'paymentPost'])->name('payment.post');
 
 Route::get('/myOrder',[App\Http\Controllers\paymentController::class,'showMyOrder'])->name('show.my.order');
+
+Route::get('/pdfReport',[App\Http\Controllers\PDFController::class,'pdfReport'])->name('pdfReport');
 
 Auth::routes();
 
