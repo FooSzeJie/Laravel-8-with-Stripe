@@ -61,6 +61,14 @@ Route::get('/myOrder',[App\Http\Controllers\paymentController::class,'showMyOrde
 
 Route::get('/pdfReport',[App\Http\Controllers\PDFController::class,'pdfReport'])->name('pdfReport');
 
+Route::get('/phone',[App\Http\Controllers\ProductController::class,'viewPhone'])->name('phone.products');
+
+Route::get('/Desktop',[App\Http\Controllers\ProductController::class,'viewDesktop'])->name('desktop.products');
+
+Route::get('/Laptop',[App\Http\Controllers\ProductController::class,'viewLaptop'])->name('laptop.products');
+
+Route::get('/computer',[App\Http\Controllers\ProductController::class,'viewcomputer'])->name('computer.products');
+
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

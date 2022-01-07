@@ -29,15 +29,17 @@
         <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="#">Products</a>
+        <a class="nav-link" href="{{route('showProduct') }}">Products</a>
       </li>
       <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <a class="nav-link dropdown-toggle" href="{{route('showCategory') }}" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           Category
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <a class="dropdown-item" href="#">Phone</a>
-          <a class="dropdown-item" href="#">Desktops/Laptop</a>
+          <a class="dropdown-item" href="{{route('phone.products') }}">Phone</a>
+          <a class="dropdown-item" href="{{route('computer.products') }}">Desktops/Laptop</a>
+          <a class="dropdown-item" href="{{route('desktop.products') }}">Desktops</a>
+          <a class="dropdown-item" href="{{route('laptop.products') }}">Laptop</a>
           <div class="dropdown-divider"></div>
           <a class="dropdown-item" href="#">Computer Hardware</a>
         </div>
@@ -48,9 +50,19 @@
       <input class="form-control mr-sm-2" name="keyword" type="search" placeholder="Search" aria-label="Search">
       <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
     </form>&nbsp;
-    <button type="button" class="btn btn-success">
-      My Cart <span class="badge bg-danger">1</span>
-    </button>
+    @guest
+    <button class="btn btn-success" onclick ="window.location.href='{{route('show.my.cart') }}'">
+      My Cart
+  </button>
+
+    @else
+    <button class="btn btn-success" onclick ="window.location.href='{{route('show.my.cart') }}'">
+      My Cart 
+      <span class="badge bg-danger">
+        {{ Session()->get('cartItem') }}
+      </span>
+  </button>
+  @endguest
   </div>
 </nav>
 

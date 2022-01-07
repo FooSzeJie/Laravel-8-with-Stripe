@@ -71,7 +71,7 @@ class ProductController extends Controller
         $products->description=$r->productDescription;
         $products->price=$r->productPrice;
         $products->quantity=$r->productQuantity;
-        $products->CategoryID=$r->CategoryID;
+        $products->CategoryID = $r->CategoryID;
         $products->save();
 
         Return redirect()->route('showProduct');
@@ -92,10 +92,51 @@ class ProductController extends Controller
         Return view('productDetail') -> with('products', $products);
     }
 
+    public function viewProduct(){
+        $product=Product::all();
+
+        (new CartController)->cartItem();
+        
+        return view('viewProducts')->with('products',$products);
+    }
+
     public function searchProduct(){
         $r = request();
         $keyword = $r->keyword;
         $products = DB::table('products') -> where('name', 'like', '%'.$keyword.'%')->get();
+        
+        return view('viewProduct') -> with('showproducts', $products);
+    }
+
+    public function viewPhone(){
+        $products = DB::table('products')
+        ->where('products.categoryID', '=', '1')//if '' means haven't make payment
+        ->get();
+        
+        return view('viewProduct') -> with('showproducts', $products);
+    }
+
+    public function viewComputer(){
+        $products = DB::table('products')
+        ->where('products.categoryID', '=', '2')//if '' means haven't make payment
+        ->orWhere('products.categoryID', '=', '3')
+        ->get();
+        
+        return view('viewProduct') -> with('showproducts', $products);
+    }
+
+    public function viewDesktop(){
+        $products = DB::table('products')
+        ->where('products.categoryID', '=', '2')//if '' means haven't make payment
+        ->get();
+        
+        return view('viewProduct') -> with('showproducts', $products);
+    }
+
+    public function viewLaptop(){
+        $products = DB::table('products')
+        ->Where('products.categoryID', '=', '3')
+        ->get();
         
         return view('viewProduct') -> with('showproducts', $products);
     }
