@@ -59,7 +59,7 @@ class CartController extends Controller
         ->groupBy('my_carts.userID')
         ->first();  
 
-        $cartItem=$carts->count_item;
+        $cartItem = $carts->count_item;
 
         Session()->put('cartItem', $cartItem);  //Assign value to session variable cartItem
     }
