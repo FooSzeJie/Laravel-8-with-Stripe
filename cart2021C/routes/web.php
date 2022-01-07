@@ -17,31 +17,27 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/addCategory', function () {
-    return view('addCategory');
-});
+Route::get('/addCategory', [App\Http\Controllers\CategoryController::class,'index'])->name('add.Category');
 
-Route::get('/addProduct', function () {
-    return view('addProduct',['categoryID' => App\Models\Category::all()]);
-});
+Route::get('/addProduct', [App\Http\Controllers\ManageProductController::class,'index'])->name('add.Product');
 
 Route::post('/addCategory/store',[App\Http\Controllers\CategoryController::class,'add'])->name('addCategory');
 
-Route::post('/addProduct/store',[App\Http\Controllers\ProductController::class,'add'])->name('addProduct');
+Route::post('/addProduct/store',[App\Http\Controllers\ManageProductController::class,'add'])->name('addProduct');
 
-Route::get('/showCategory',[App\Http\Controllers\CategoryController::class,'view'])->name('showCategory');
+Route::get('/showCategory',[App\Http\Controllers\CategoryController::class,'show'])->name('showCategory');
 
-Route::get('/showProduct',[App\Http\Controllers\ProductController::class,'view'])->name('showProduct');
+Route::get('/showProduct',[App\Http\Controllers\ManageProductController::class,'show'])->name('showProduct');
 
-Route::get('/deleteProduct/{id}', [App\Http\Controllers\ProductController::class,'delete'])->name('deleteProduct');
+Route::get('/deleteProduct/{id}', [App\Http\Controllers\ManageProductController::class,'delete'])->name('deleteProduct');
 
-Route::get('/editProduct/{id}',[App\Http\Controllers\ProductController::class, 'edit'])
+Route::get('/editProduct/{id}',[App\Http\Controllers\ManageProductController::class, 'edit'])
 ->name('editProduct');
 //http://localhost/editProduct.php?id=22    localhost/editProduct/22
 
-Route::post('/updateProduct', [App\Http\Controllers\ProductController::class, 'update'])->name('updateProduct');
+Route::post('/updateProduct', [App\Http\Controllers\ManageProductController::class, 'update'])->name('updateProduct');
 
-Route::get('/viewProduct',[App\Http\Controllers\ProductController::class,'show'])->name('ViewProduct');
+Route::get('/viewProduct',[App\Http\Controllers\ProductController::class,'view'])->name('ViewProduct');
 
 Route::post('/Products', [App\Http\Controllers\ProductController::class, 'searchProduct'])->name('search.product');
 
