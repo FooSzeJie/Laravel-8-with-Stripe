@@ -37,7 +37,7 @@ Route::get('/editProduct/{id}',[App\Http\Controllers\ManageProductController::cl
 
 Route::post('/updateProduct', [App\Http\Controllers\ManageProductController::class, 'update'])->name('updateProduct');
 
-Route::get('/viewProduct',[App\Http\Controllers\ProductController::class,'view'])->name('ViewProduct');
+Route::get('/Products',[App\Http\Controllers\ProductController::class,'view'])->name('ViewProduct');
 
 Route::post('/Products', [App\Http\Controllers\ProductController::class, 'searchProduct'])->name('search.product');
 

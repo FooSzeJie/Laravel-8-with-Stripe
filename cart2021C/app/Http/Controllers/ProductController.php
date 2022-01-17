@@ -13,11 +13,11 @@ class ProductController extends Controller
 
     public function view(){
         //$viewProduct = Product::all();
-        $showProduct = DB::table('products')
+        $viewProduct = DB::table('products')
         ->select('products.*')
         ->get();
  
-         Return view('viewProduct')->with('showproducts',$showProduct);
+         Return view('viewProduct')->with('viewProduct',$viewProduct);
      }
 
     public function productdetail($id){
@@ -27,6 +27,7 @@ class ProductController extends Controller
     }
 
     public function viewProduct(){
+        
         $product=Product::all();
 
         (new CartController)->cartItem();
